@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendation System</title>
+    <link rel="stylesheet" href="/static/button_style.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <div class="logo">
+                <img src="./static/logo2.png" alt="">
+                <span>Emotify</span>
+            </div>
+            <ul>
+                <li><a href="http://127.0.0.1:5000/">HOME</a></li>
+                <li><a href="http://127.0.0.1:5500/contact.html">CONTACT</a></li>
+                <li><a href="http://localhost:5000/templates/join_page">TEAM-INFO</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="content">
+            <!-- <h1 class="slide-left">Our <br> Website</h1>
+            <p class="slide-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <div class="links slide-left"> -->
+                <div class="output" >
+                    {% if final_output %}
+                    <h2 style="font-family:Bio-Rhyme; color:white;margin:40px;font:40px">You look {{final_output}}</h2>
+                    <h1 style="font-family:Bio-Rhyme; color: white;margin:40px;font:40px; font-size:70px">Let's get to the fun part...!</h1>
+                    <h2 style="font-family:Bio-Rhyme; color: white;margin:40px;font:40px">Which one do you prefer?</h2>
+                    {% endif %}
+                </div>
+            <div >
+                <a href="http://localhost:5000/movies/{{final_output}}" class="btn">MOVIES</a>
+                <a href="http://localhost:5000/songs/{{final_output}}" class="btn">SONGS</a>
+        </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

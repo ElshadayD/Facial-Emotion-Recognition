@@ -1,0 +1,462 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <style>
+        * {
+  margin: 0;
+}
+
+body {
+    width: 100%;
+        height: 800px;
+        overflow-x: hidden;
+        justify-content: center;
+        text-align: center;
+        background-color: #2d3436;
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+        background-size: cover;
+        background-repeat: no-repeat;
+}
+
+
+nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 8%;
+        transition: background 1s;
+    }
+    
+    nav .logo{
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        font-weight: 600;
+        color: #FFF;
+        font-family:Helvetica;
+
+    }
+    
+    nav .logo img{
+        width: 50px;
+        height:50px;
+        margin-right: 10px;
+        
+    }
+    .list{
+      position: absolute;
+      top: 30px;
+      left: 90%;
+     
+        list-style: none;
+    }
+    .list a{
+      text-decoration: none;
+        color: #FFF;
+        font-weight: 800;
+        font-family:Helvetica;
+    }
+    .list a:hover{
+      color:  #79ff4d
+    }
+    
+    nav:hover{
+        background-image: linear-gradient(rgba(22, 22, 21, 0.5),rgba(10, 10, 10, 0.849))
+
+
+    }
+
+
+.menu-container {
+  flex: 6;
+  
+}
+
+
+.profile-container {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.profile-text-container {
+  margin: 0 20px;
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.toggle {
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.toggle-icon {
+  color: goldenrod;
+}
+
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease all;
+}
+
+
+.container {
+  background-color: #151515;
+  min-height: calc(100vh - 50px);
+  color: white;
+}
+
+.content-container {
+  margin-left: 50px;
+}
+
+.featured-content {
+  height: 50vh;
+  padding: 50px;
+}
+
+.featured-title {
+  width: 200px;
+}
+
+.featured-desc {
+  width: 500px;
+  color: lightgray;
+  margin: 30px 0;
+}
+
+.featured-button {
+  background-color: #4dbf00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+
+.movie-list-container {
+  padding: 0 20px;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+.movie-list-item {
+  margin-right: 30px;
+  position: relative;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.3);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc,
+.movie-list-item:hover .movie-list-item-button {
+  opacity: 1;
+}
+
+.movie-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 250px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+.movie-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 23px;
+  font-weight: bold;
+  position: absolute;
+  top: 5%;
+  left: 20px;
+  color: rgb(36, 32, 32);
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 20%;
+  left: 20px;
+  width: 200px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+  color: white;
+}
+
+.movie-list-item-button {
+  padding: 10px;
+  width:50px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 100px;
+  left: 120px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+  text-decoration: none;
+}
+
+.arrow {
+  font-size: 120px;
+  position: absolute;
+  top: 90px;
+  right: 0;
+  color: lightgray;
+  opacity: 0.5;
+  cursor: pointer;
+ 
+}
+
+.container.active {
+  background-color: white;
+}
+
+.movie-list-title.active {
+  color: black;
+}
+
+.navbar-container.active {
+  background-color: white;
+
+  color: black;
+}
+
+
+.toggle.active{
+    background-color: black;
+}
+
+.toggle-ball.active{
+    background-color: white;
+    transform: translateX(-20px);
+}
+
+@media only screen and (max-width: 940px){
+    .menu-container{
+        display: none;
+      
+    }
+}
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../static/logo2.png" alt="" width="200px" height="40px">
+            <span>Emotify</span>
+        </div>
+      
+            <li class="list"><a href="http://127.0.0.1:5000/">HOME</a></li>
+      
+    </nav>
+    
+            <div class="movie-list-container">
+                <h1 class="movie-list-title" style="color: white; margin-top: 40px;" >LATEST SONGS</h1><br><br>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                      
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static/Neutral_Songs/1.jpg" alt="">
+                            <span class="movie-list-item-title">Supermarket Flowers</span>
+                            <p class="movie-list-item-desc">By Ed Sheeran</p>
+                            <a class="movie-list-item-button" href="https://www.youtube.com/watch?v=bIB8EWqCPrQ">Play</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/2.jpg" alt="">
+                            <span class="movie-list-item-title">Still Waiting To Start</span>
+                            <p class="movie-list-item-desc">By Nina Nesbitt</p>
+                            <a class="movie-list-item-button" href="https://www.youtube.com/watch?v=ABBtVeY7Cbs">Play</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/3.jpg" alt="">
+                            <span class="movie-list-item-title">Colors</span>
+                            <p class="movie-list-item-desc">By Halsey</p>
+                            <a class="movie-list-item-button" href="https://www.youtube.com/watch?v=ySbEHnAuU6o">Play</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/4.jpg" alt="">
+                            <span class="movie-list-item-title">Passenger</span>
+                            <p class="movie-list-item-desc">By Noah kahan</p>
+                            <a class="movie-list-item-button" href="https://www.youtube.com/watch?v=S2Ps44EG5hc">Play</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/5.jpg" alt="">
+                            <span class="movie-list-item-title">Painter</span>
+                            <p class="movie-list-item-desc">By Austin Blue</p>
+                            <a class="movie-list-item-button" href="https://www.youtube.com/watch?v=rAVfaB89jl4">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/6.jpg" alt="">
+                            <span class="movie-list-item-title">Slow Hands</span>
+                            <p class="movie-list-item-desc">By Niall horans</p>
+                            <a class="movie-list-item-button" href="https://youtu.be/o5FzCz8NC58">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/7.jpg" alt="">
+                            <span class="movie-list-item-title">Skin</span>
+                            <p class="movie-list-item-desc">By Rag'n'Bone Man</p>
+                                <a class="movie-list-item-button" href="https://www.youtube.com/watch?v=rAVfaB89jl4">Watch</a>
+                    </div>
+                   
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+           
+            </div>
+         
+            </div>
+           <br><br>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title"style="color: white;">OTHER HITS</h1><br><br>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/8.jpg" alt="">
+                            <span class="movie-list-item-title">Lost</span>
+                            <p class="movie-list-item-desc">By Marooon 5</p>
+                            <a class="movie-list-item-button" href="https://www.imdb.com/title/tt4955642/">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/9.jpg" alt="">
+                            <span class="movie-list-item-title">Thunder</span>
+                            <p class="movie-list-item-desc">By Imagine Dragons</p>
+                            <a class="movie-list-item-button" href="https://www.imdb.com/title/tt10062292/">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/10.jpg" alt="">
+                            <span class="movie-list-item-title">Renegades</span>
+                            <p class="movie-list-item-desc">By X Ambassadors</p>
+                            <a class="movie-list-item-button" href="https://www.imdb.com/title/tt8740976/">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/13.jpg" alt="">
+                            <span class="movie-list-item-title">Trampoline</span>
+                            <p class="movie-list-item-desc">By Shaed</p>
+                                <a class="movie-list-item-button" href="https://www.imdb.com/title/tt8421350/">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/11.jpg" alt="">
+                            <span class="movie-list-item-title">Good Life</span>
+                            <p class="movie-list-item-desc">By One Republlic</p>
+                                <a class="movie-list-item-button" href="https://www.imdb.com/title/tt10919420/">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/12.jpg" alt="">
+                            <span class="movie-list-item-title">Mess Is Mine</span>
+                            <p class="movie-list-item-desc">By Vance Joy</p>
+                                <a class="movie-list-item-button" href="https://www.imdb.com/title/tt10888878//">Watch</a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="../static//Neutral_Songs/14.jpg" alt="">
+                            <span class="movie-list-item-title">Little Talks</span>
+                            <p class="movie-list-item-desc">By Of Monsters And Men</p>
+                                <a class="movie-list-item-button" href="https://www.imdb.com/title/tt2403776/">Watch</a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+              
+                </div>
+            </div>
+           
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+const arrows = document.querySelectorAll(".arrow");
+const movieLists = document.querySelectorAll(".movie-list");
+
+arrows.forEach((arrow, i) => {
+  const itemNumber = movieLists[i].querySelectorAll("img").length;
+  let clickCounter = 0;
+  arrow.addEventListener("click", () => {
+    const ratio = Math.floor(window.innerWidth / 270);
+    clickCounter++;
+    if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
+      movieLists[i].style.transform = `translateX(${
+        movieLists[i].computedStyleMap().get("transform")[0].x.value - 300
+      }px)`;
+    } else {
+      movieLists[i].style.transform = "translateX(0)";
+      clickCounter = 0;
+    }
+  });
+  
+
+  console.log(Math.floor(window.innerWidth / 270));
+});
+
+
+
+const ball = document.querySelector(".toggle-ball");
+const items = document.querySelectorAll(
+  ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
+);
+
+ball.addEventListener("click", () => {
+  items.forEach((item) => {
+    item.classList.toggle("active");
+  });
+  ball.classList.toggle("active");
+});
+
+
+    </script>
+</body>
+
+</html>

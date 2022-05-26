@@ -1,0 +1,228 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: arial, sans-serif;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 30px;
+	background: #23242b;
+	color: #fff;
+    height: 80px;
+}
+.u-name {
+	font-size: 20px;
+	padding-left: 17px;
+}
+.u-name b {
+	color: #127b8e;
+}
+.header i {
+	font-size: 30px;
+	cursor: pointer;
+	color: #fff;
+}
+.header i:hover {
+	color: #127b8e;
+}
+.user-p {
+	text-align: center;
+	padding-left: 10px;
+	padding-top: 25px;
+}
+.user-p img {
+	width: 100px;
+	border-radius: 50%;
+}
+.user-p h4 {
+	color: #ccc;
+	padding: 5px 0;
+
+}
+.side-bar {
+	width: 250px;
+	background: linear-gradient(gray,darkgray);
+	min-height: 100vh;
+	transition: 500ms width;
+}
+.body {
+	display: flex;
+}
+.section-1 {
+	width: 100%;
+	background: url("../img/bg.jpg");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.section-1 h1 {
+	color: #fff;
+	font-size: 60px;
+}
+.section-1 p {
+	color: #127b8e;
+	font-size: 20px;
+	background: #fff;
+	padding: 7px;
+	border-radius: 5px;
+}
+.side-bar ul {
+	margin-top: 20px;
+	list-style: none;
+}
+.side-bar ul li {
+	font-size: 16px;
+	padding: 15px 0px;
+	padding-left: 20px;
+	transition: 500ms background;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.side-bar ul li:hover {
+	background: #127b8e;
+}
+.side-bar ul li a {
+	text-decoration: none;
+	color: #eee;
+	cursor: pointer;
+	letter-spacing: 1px;
+    margin-top: 100px;
+}
+
+.content{
+    margin-top: -650px;
+    margin-left: 300px;
+}
+.side-bar ul li a i {
+	display: inline-block;
+	padding-right: 10px;
+	font-size: 23px;
+}
+#navbtn {
+	display: inline-block;
+	margin-left: 70px;
+	font-size: 20px;
+	transition: 500ms color;
+}
+#checkbox {
+	display: none;
+}
+#checkbox:checked ~ .body .side-bar {
+	width: 60px;
+}
+#checkbox:checked ~ .body .side-bar .user-p{
+	visibility: hidden;
+}
+#checkbox:checked ~ .body .side-bar a span{
+	display: none;
+}
+    </style>
+</head>
+<body>
+	<input type="checkbox" id="checkbox">
+	<header class="header">
+        <img src="static/logo2.png" alt="" width="60px" height="60px">
+        <span style="font-size:25px;margin-left: -500px;font-weight: bold;">Emotify</span>
+			<label for="checkbox">
+				<i id="navbtn" class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</h2>
+		<i class="fa fa-user" aria-hidden="true"></i>
+	</header>
+   
+	<div class="body">
+		<nav class="side-bar">
+			<div class="user-p">
+                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                <p><label for="file" style="cursor: pointer; color:white">Upload Image</label></p>
+                <p><img id="output" width="200" /></p>
+				
+			</div>
+			<ul>
+				<li>
+					<a href="#">
+						<i class="fa fa-desktop" aria-hidden="true"></i>
+						<span>Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>
+						<span>Message</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-comment-o" aria-hidden="true"></i>
+						<span>Comment</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-info-circle" aria-hidden="true"></i>
+						<span>About</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-cog" aria-hidden="true"></i>
+						<span>Setting</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-power-off" aria-hidden="true"></i>
+						<span>Logout</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<section class="section-1">
+			<h1>WELCOME</h1>
+		</section>
+	</div>
+    
+    <div class="content">
+        <h1>Welcome back, {{ username }}!</h1>
+        <div class="links slide-left" > 
+            <a href="http://localhost:5000/camera" class="btn">Start Realtime Recognition</a>
+            <a href="http://localhost:5000/train" class="btn">Start training</a>
+
+        </div>
+    </div>
+</br>
+<div class="output" >
+    {% if final_output %}
+<h2 style="font-family:Bio-Rhyme">Your Emotion is {{final_output}}</h2>
+    <div class="output1" >
+    <a href="http://localhost:5000/movies/{{final_output}}" class="btn">Movies</a>
+     <a href="http://localhost:5000/songs/{{final_output}}" class="btn">Songs</a>
+        </div>
+{% endif %}
+</body>
+</html>
+<script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script>
+    

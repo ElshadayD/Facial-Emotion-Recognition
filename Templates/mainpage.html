@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Recognition and Analysis</title>
+    <style>*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Helvetica',sans-serif;
+    }
+    .header{
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(static/img.jpg);
+        background-position: center;
+        background-size: cover;
+        overflow-x: hidden;
+    }
+    
+    nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 8%;
+        transition: background 1s;
+        background-image: linear-gradient(rgba(22, 22, 21, 0.5),rgba(10, 10, 10, 0.849))
+    }
+    
+    nav .logo{
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        font-weight: 600;
+        color: #FFF;
+        font-family:Helvetica;
+
+    }
+    
+    nav .logo img{
+        width: 50px;
+        height:50px;
+        margin-right: 10px;
+        
+    }
+    
+    nav ul li{
+        display: inline-block;
+        list-style: none;
+        margin: 10px 20px;
+        
+    }
+    
+    nav ul li a{
+        text-decoration: none;
+        color: #FFF;
+        font-weight: 800;
+    }
+    nav ul li a:hover{
+        color:  #79ff4d
+    }
+   
+    
+
+    
+    .content{
+        margin-top: 9%;
+        margin-left: 9%;
+        color: #FFF;
+    
+    
+    }
+    
+    .content h1{
+        font-size: 120PX;
+        font-weight: 600;
+        line-height: 140px;
+        font-family: Brush Script MT,cursive;
+    }
+    
+    .content p{
+        max-width: 500px;
+        line-height: 28px;
+        opacity: 0;
+    }
+
+    
+    .links{
+        margin-top: 30px;
+        opacity: 0;
+    }
+    .links a{
+     color:  white;
+        display: inline-block;
+        text-decoration: none;
+    
+    }
+
+    .btn:hover{
+
+        background-image: linear-gradient(rgba(150, 150, 150, 0.3),rgba(150, 150, 150   , 0.3))
+    }
+    .btn{
+     width:300px;
+      height:50px;
+        border: 2px solid #fff;
+        padding: 10px 35px;
+        border-radius: 30px;
+        margin-right: 15px;
+        font-weight: 700;
+         text-align:center;
+
+    }
+    .links slide-left a{
+     color:  #79ff4d
+    }
+    
+    .slide-left{
+        animation: slideleft 1s linear forwards;
+        
+    }
+    
+    .content h1{
+        font-family: Brush Script MT,cursive;
+    }
+    
+    @keyframes slideleft{
+        0%{
+            transform: translate(100px);
+            opacity: 0;
+        }
+        100%{
+            transform: translate(0px);
+            opacity: 1;
+        }
+        
+    }
+    
+    p.slide-left{
+        animation-delay: 1s;
+    }
+    .links.slide-left{
+        animation-delay: 2s;
+        color:blue;
+    }
+    .output{
+        color:white;
+        font-family:"cursive"
+        }
+     .output1{
+         margin-top:20px;
+        color:white;
+         display: inline-block;
+        font-family:"cursive"
+        }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body{
+	line-height: 1.5;
+	font-family: 'Poppins', sans-serif;
+}
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+.container{
+	max-width: 1170px;
+	margin:auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}
+.footer{
+	background-color: #f2f2f2;
+    padding: 70px;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: white;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h5{
+	font-size: 18px;
+	color: black;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+
+.footer-col h5::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	text-decoration: none;
+	font-weight: 300;
+	color: black;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: black;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <div class="logo">
+                <img src="static/logo2.png" alt="" width="200px" height="40px">
+                <span>Emotify</span>
+            </div>
+            <ul>
+                <li><a href="http://127.0.0.1:5000/">HOME</a></li>
+                <li><a href="http://127.0.0.1:5500/contact.html">CONTACT</a></li>
+                <li><a href="http://localhost:5000/templates/join_page">TEAM-INFO</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="content">
+            <h1 class="slide-left">Better Living<br>Through Emotions....!</h1>
+            <div class="links slide-left">
+                <a href="http://localhost:5000/login" class="btn">Get started</a>
+       
+
+            </div>
+        </div>
+    </br>
+    <div class="output" >
+        {% if final_output %}
+    <h2 style="font-family:Bio-Rhyme">Your Emotion is {{final_output}}</h2>
+        <div class="output1" >
+        <a href="http://localhost:5000/movies/{{final_output}}" class="btn">Movies</a>
+         <a href="http://localhost:5000/songs/{{final_output}}" class="btn">Songs</a>
+            </div>
+    {% endif %}
+      </div>
+        <div class="footer-col">
+  	 			<h4>Contact us</h4>
+  	 			<div class="social-links">
+  	 				<a href="#"><i class="fab fa-facebook-f"><img src="../static/fb.png" width="50px" height="50px"></i></a>
+  	 				<a href="#"><i class="fab fa-twitter"><img src="../static/tw.png" width="50px" height="50px"></i></a>
+  	 				<a href="#"><i class="fab fa-instagram"><img src="../static/ig.png" width="50px" height="50px"></i></a>
+  	 				<a href="#"><i class="fab fa-linkedin-in"><img src="../static/link.png" width="50px" height="50px"></i></a>
+  	 			</div>
+  	 		</div>
+<footer class="footer">
+  	 <div class="container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h5>company</h5>
+  	 			<ul>
+  	 				<li><a href="#">about us</a></li>
+  	 				<li><a href="#">our services</a></li>
+  	 				<li><a href="#">privacy policy</a></li>
+  	 			</ul>
+  	 		</div>
+
+
+
+  	 	</div>
+  	 </div>
+  </footer>
+
+    </div>
+</body>
+</html>
