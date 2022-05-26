@@ -1,2 +1,2 @@
 -Run test.py to start the application
--click on the click provided
+and click on the click provided
