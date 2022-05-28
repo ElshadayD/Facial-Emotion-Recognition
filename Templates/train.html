@@ -1,0 +1,23 @@
+
+ 
+ <div class="img1">
+
+<img src="{{image}}" id="getImage" alt="pic2"/>
+<p style="color:blue;font:bold"> emotion is {{result}}</p>
+<p id="hi"></p>
+<p >dominant emotion is {{dominant}}</p>
+<a href="http://localhost:5000/train" onclick="imagefun()">NEXT</a>
+</div>
+
+<script>
+     function imagefun() {
+            document.getElementById('getImage').src ="{{image}}"
+
+        }   
+        var dominant ='{{dominant}}'
+        if (dominant=='happy')
+        {
+            document.getElementById('hi').innerHTML="hello"
+        };
+
+    </script>
