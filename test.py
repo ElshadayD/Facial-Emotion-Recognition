@@ -1,33 +1,28 @@
 
+from cgitb import reset
 import cv2
 import numpy as np
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from flask import Flask, request, render_template,url_for, session,redirect,flash
 import statistics as st
+
 import tensorflow as tf
 from keras.models import load_model
 from time import sleep
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing import image
 import cv2
+from deepface import DeepFace
+import matplotlib.pyplot as plt
+import time
 import numpy as np
-import urllib
-import sqlite3
-import base64
+import random
 from flask_mysqldb import MySQL
 import mysql.connector
 import MySQLdb.cursors
 import re
-import base64
-from PIL import UnidentifiedImageError
-from PIL import Image
-from collections import defaultdict
-import io
 import os
-from deepface import DeepFace
-import matplotlib.pyplot as plt
-from textblob import TextBlob
 app = Flask(__name__)
 app.secret_key = '1a2b3c4d5e'
 app.config['MYSQL_HOST'] = 'localhost'
@@ -172,16 +167,22 @@ def camera():
     final_output1 = st.mode(output)
     return render_template("buttons.html", final_output=final_output1)
 
-
+IMAGE_FOLDER=os.path.join('static','images')
 @app.route("/train", methods=['GET', 'POST'])
+
 def train():
+    images=['h6.jpg','h1.jpg','h3.jpg','s1.jpg',
+    's2.jpg','s2.jpg','n1.jpg','n3.jpg','a1.jpg',
+    'h4.jpg','a3.jpg','su1.jpg','su2.jpg',
+    'su3.jpg']
+    sampled_list = random.sample(images, 14)
+    img_path=os.path.join(IMAGE_FOLDER, random.choice(sampled_list))
+    result=DeepFace.analyze(img_path,actions=['emotion'],enforce_detection=False)
+    dominant=result[ 'dominant_emotion']
+
+    
+    return render_template("train.html", image=img_path,result=result,dominant=dominant)
    
-
-    return render_template("train.html")
-
-# routes
-
-
 
 @app.route('/templates/buttons', methods=['GET', 'POST'])
 def buttons():
@@ -250,7 +251,6 @@ def join():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
 
 
 
