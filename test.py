@@ -3,14 +3,11 @@ from cgitb import reset
 import cv2
 import numpy as np
 from keras.models import load_model
-from keras.preprocessing.image import img_to_array
+from tensorflow.keras.utils import img_to_array
 from flask import Flask, request, render_template,url_for, session,redirect,flash
 import statistics as st
-
 import tensorflow as tf
-from keras.models import load_model
 from time import sleep
-from keras.preprocessing.image import img_to_array
 from keras.preprocessing import image
 import cv2
 from deepface import DeepFace
@@ -19,7 +16,6 @@ import time
 import numpy as np
 import random
 from flask_mysqldb import MySQL
-import mysql.connector
 import MySQLdb.cursors
 import re
 import os
